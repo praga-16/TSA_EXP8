@@ -24,6 +24,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import warnings
+from statsmodels.tsa.arima.model import ARIMA
+
 warnings.filterwarnings('ignore')
 
 # Read the Gold dataset from a CSV file
@@ -55,10 +57,8 @@ print(rolling_mean_5.head(10))
 # Perform rolling average transformation with a window size of 10 on 'Price Today'
 rolling_mean_10 = data['Price Today'].rolling(window=10).mean()
 
-# Create a new figure for plotting
-plt.figure()
-
 # Plot the original data and fitted value (rolling mean with window size 10)
+plt.figure()
 plt.plot(data['Price Today'], label='Original Data')
 plt.plot(rolling_mean_10, label='Rolling Mean (window=10)', color='orange')
 plt.title('Original Data and Rolling Mean (window=10)')
@@ -81,6 +81,34 @@ plt.ylabel('Price Today')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+# Implement the Moving Average (MA) Model
+# Set the order (p, d, q) to (0, 0, q) for a pure MA model. Let's try q = 1 first.
+q = 1
+ma_model = ARIMA(data['Price Today'], order=(0, 0, q))
+ma_model_fit = ma_model.fit()
+
+# Display the summary of the fitted model
+print(ma_model_fit.summary())
+
+# Forecast the next 10 data points using the fitted model
+forecast = ma_model_fit.forecast(steps=10)
+
+# Plot the original data and the forecasted values
+plt.figure()
+plt.plot(data['Price Today'], label='Original Data')
+plt.plot(range(len(data), len(data) + 10), forecast, label='MA Forecast', color='green', marker='o')
+plt.title('Original Data and Moving Average Forecast')
+plt.xlabel('Index')
+plt.ylabel('Price Today')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Print the forecasted values
+print("Forecasted values for the next 10 points:")
+print(forecast)
+
 ```
 ### OUTPUT:
 ## data:
@@ -89,7 +117,7 @@ plt.show()
 
 ## Price Today
 ![image](https://github.com/user-attachments/assets/f9a5b49e-e8e6-4e45-9d98-606c19ec00a6)
-![image](https://github.com/user-attachments/assets/68ed20a6-11fe-4f3a-830c-30a5ec01adff)
+
 
 ## Original Data and Rolling Mean
 ![image](https://github.com/user-attachments/assets/82954833-9966-4860-945f-995f94a50d46)
