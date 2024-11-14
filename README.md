@@ -85,15 +85,20 @@ plt.show()
 ### OUTPUT:
 ## data:
 ![image](https://github.com/user-attachments/assets/1e9d36d8-987c-4845-a3f4-4144e50fef21)
+![image](https://github.com/user-attachments/assets/52fbba13-a8bc-4082-baea-b4a7084d3007)
 
 ## Price Today
 ![image](https://github.com/user-attachments/assets/f9a5b49e-e8e6-4e45-9d98-606c19ec00a6)
+![image](https://github.com/user-attachments/assets/68ed20a6-11fe-4f3a-830c-30a5ec01adff)
 
 ## Original Data and Rolling Mean
 ![image](https://github.com/user-attachments/assets/82954833-9966-4860-945f-995f94a50d46)
 ## Exponential Smoothing
 
 ![image](https://github.com/user-attachments/assets/1e430e29-f05a-402d-8ec6-89f1fe2901a6)
+## Moving average
+![image](https://github.com/user-attachments/assets/138f98be-b970-419a-8a11-cf039bab32ae)
+![image](https://github.com/user-attachments/assets/7dafc3f7-baea-450d-81a0-0ad452c0c2ca)
 
 
 ### RESULT:
